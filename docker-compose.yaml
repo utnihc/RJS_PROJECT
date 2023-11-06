@@ -1,0 +1,18 @@
+  GNU nano 6.2                   docker-compose.yaml
+version: '3'
+services:
+  my-app:
+    image: chintu222/dev:v1.0
+    # Other configurations for your application container
+    volumes:
+      - app-build:/app/build  # Mount the build folder
+
+  web-server:
+    image: nginx:latest
+    ports:
+      - "80:80"  # Map container port 80 to host port 80
+    volumes:
+      - app-build:/usr/share/nginx/html  # Mount the same volume to Nginx's HTM>
+
+volumes:
+  app-build:
